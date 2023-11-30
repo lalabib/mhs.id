@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">mhs.id</string>
+
+    <string name="detail_title">Detail Mahasiswa</string>
+    <string name="image">Gambar</string>
+    <string name="name">Nama</string>
+    <string name="search_hint">Cari berdasarkan nama atau nim</string>
+</resources>
