@@ -3,6 +3,14 @@
 
     <string name="detail_title">Detail Mahasiswa</string>
     <string name="image">Gambar</string>
-    <string name="name">Nama</string>
-    <string name="search_hint">Cari berdasarkan nama atau nim</string>
+    <string name="name_title">Nama</string>
+    <string name="nim_title">NIM</string>
+    <string name="univ_title">Kampus</string>
+    <string name="prodi_title">Prodi</string>
+    <string name="name">Kuroco Harmadi</string>
+    <string name="nim">1232131</string>
+    <string name="univ">Universitas Abc</string>
+    <string name="prodi">Sastra Pertanian</string>
+    <string name="search_hint">Cari berdasarkan nama atau nim..</string>
+    <string name="search_error">Data tidak ditemukan!</string>
 </resources>

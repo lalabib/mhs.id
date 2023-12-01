@@ -6,4 +6,17 @@
     </style>
 
     <style name="Theme.Mhsid" parent="Base.Theme.Mhsid" />
+
+    <style name="CustomCardCorners" parent="@style/Widget.MaterialComponents.CardView">
+        <item name="shapeAppearanceOverlay">@style/CardView_custom_corners</item>
+        <item name="android:backgroundTint">@color/white</item>
+    </style>
+
+    <style name="CardView_custom_corners">
+        <item name="cornerSizeTopRight">30dp</item>
+    </style>
+
+    <style name="search_view">
+        <item name="android:background">@drawable/bg_search_light</item>
+    </style>
 </resources>

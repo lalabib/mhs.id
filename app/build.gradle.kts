@@ -17,7 +17,7 @@ android {
         versionName = "0.0.1"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        buildConfigField("String", "apiKey", "apikey")
+        buildConfigField("String", "apiKey", "\"labibh\"")
     }
 
     buildTypes {
@@ -51,9 +51,6 @@ dependencies {
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
-
-    //Glide
-    implementation ("com.github.bumptech.glide:glide:4.15.1")
 
     // Retrofit
     implementation ("com.squareup.retrofit2:retrofit:2.9.0")
