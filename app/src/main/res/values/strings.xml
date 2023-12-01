@@ -7,10 +7,23 @@
     <string name="nim_title">NIM</string>
     <string name="univ_title">Kampus</string>
     <string name="prodi_title">Prodi</string>
+    <string name="jenis_kelamin_title">Jenis kelamin</string>
+    <string name="jenjang_title">Jenjang</string>
+    <string name="smt_masuk_title">Semester masuk</string>
+    <string name="status_awal_title">Status awal</string>
+    <string name="status_saat_ini_title">Status saat ini</string>
     <string name="name">Kuroco Harmadi</string>
     <string name="nim">1232131</string>
     <string name="univ">Universitas Abc</string>
     <string name="prodi">Sastra Pertanian</string>
+    <string name="jenis_kelamin">Laki-Laki</string>
+    <string name="jenjang">S1</string>
+    <string name="smt_masuk">2019 Ganjil</string>
+    <string name="status_awal">Peserta didik baru</string>
+    <string name="status_saat_ini">Lulus</string>
+    <string name="genap">Genap</string>
+    <string name="ganjil">Ganjil</string>
     <string name="search_hint">Cari berdasarkan nama atau nim..</string>
     <string name="search_error">Data tidak ditemukan!</string>
+    <string name="error_data">An error occurred while passing data</string>
 </resources>

@@ -8,7 +8,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.lalabib.mhsid.databinding.ItemMahasiswaBinding
 import com.lalabib.mhsid.domain.model.Mahasiswa
 
-class MahasiswaAdapter : ListAdapter<Mahasiswa, MahasiswaAdapter.ViewHolder>(MahasiswaDiffUtil) {
+class MahasiswaAdapter(private val onItemClick: (Mahasiswa) -> Unit) :
+    ListAdapter<Mahasiswa, MahasiswaAdapter.ViewHolder>(MahasiswaDiffUtil) {
+
     private object MahasiswaDiffUtil : DiffUtil.ItemCallback<Mahasiswa>() {
         override fun areItemsTheSame(oldItem: Mahasiswa, newItem: Mahasiswa): Boolean {
             return oldItem.uniqueId == newItem.uniqueId
@@ -19,27 +21,35 @@ class MahasiswaAdapter : ListAdapter<Mahasiswa, MahasiswaAdapter.ViewHolder>(Mah
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MahasiswaAdapter.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = ItemMahasiswaBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return ViewHolder(binding)
+        return ViewHolder(onItemClick, binding)
     }
 
-    override fun onBindViewHolder(holder: MahasiswaAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val mahasiswa = getItem(position)
         if (mahasiswa != null) {
             holder.bind(mahasiswa)
         }
     }
 
-    class ViewHolder(private val binding: ItemMahasiswaBinding) :
+    class ViewHolder(
+        private val onItemClick: (Mahasiswa) -> Unit,
+        private val binding: ItemMahasiswaBinding
+    ) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(mhs: Mahasiswa) {
+        fun bind(mahasiswa: Mahasiswa) {
             binding.apply {
-                tvName.text = mhs.nama
-                tvNim.text = mhs.nim
-                tvUniv.text = mhs.univ
-                tvProdi.text = mhs.prodi
+                tvName.text = mahasiswa.nama
+                tvNim.text = mahasiswa.nim
+                tvProdi.text = mahasiswa.prodi
+
+                // Remove spaces
+                val input = mahasiswa.univ
+                val result = input.trimStart()
+                tvUniv.text = result
             }
+            itemView.setOnClickListener { onItemClick(mahasiswa) }
         }
     }
 }

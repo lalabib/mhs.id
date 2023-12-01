@@ -1,5 +1,6 @@
 package com.lalabib.mhsid.ui.home
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.SearchView
@@ -11,6 +12,7 @@ import com.lalabib.mhsid.adapter.MahasiswaAdapter
 import com.lalabib.mhsid.data.remote.network.Result
 import com.lalabib.mhsid.databinding.ActivityHomeBinding
 import com.lalabib.mhsid.databinding.ContentHomeBinding
+import com.lalabib.mhsid.ui.detail.DetailActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -19,6 +21,7 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHomeBinding
     private lateinit var homeContentBinding: ContentHomeBinding
 
+    private lateinit var search: SearchView
     private lateinit var mahasiswaAdapter: MahasiswaAdapter
     private val homeViewModel: HomeViewModel by viewModels()
 
@@ -33,7 +36,13 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun setupAction() {
-        mahasiswaAdapter = MahasiswaAdapter()
+        mahasiswaAdapter = MahasiswaAdapter { mahasiswa ->
+            Intent(this@HomeActivity, DetailActivity::class.java).apply {
+                putExtra(DetailActivity.EXTRA_DATA, mahasiswa.uniqueId)
+                startActivity(this)
+                search.clearFocus()
+            }
+        }
 
         homeContentBinding.rvMahasiswa.apply {
             layoutManager = LinearLayoutManager(this@HomeActivity)
@@ -42,7 +51,7 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun search() {
-        val search = binding.searchView
+        search = binding.searchView
         search.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String): Boolean {
                 return false

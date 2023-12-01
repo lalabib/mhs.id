@@ -19,30 +19,40 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <SearchView
-                    android:id="@+id/search_view"
-                    style="@style/search_view"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:layout_marginStart="12dp"
-                    android:layout_marginEnd="16dp"
-                    android:iconifiedByDefault="false"
-                    android:queryHint="@string/search_hint"
-                    app:layout_constraintEnd_toEndOf="parent"
+                <ImageView
+                    android:id="@+id/ic_back_arrow"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginEnd="2dp"
+                    android:contentDescription="@string/image"
+                    android:src="@drawable/ic_back_arrow"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_detail_title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="20dp"
+                    android:text="@string/detail_title"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/ic_back_arrow"
+                    app:layout_constraintTop_toTopOf="@id/ic_back_arrow" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </com.google.android.material.appbar.MaterialToolbar>
     </com.google.android.material.appbar.AppBarLayout>
 
     <include
-        android:id="@+id/content_home"
-        layout="@layout/content_home"
+        android:id="@+id/content_detail"
+        layout="@layout/content_detail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:layout_marginBottom="20dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

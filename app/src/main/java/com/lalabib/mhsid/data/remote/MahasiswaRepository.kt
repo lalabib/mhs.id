@@ -3,6 +3,7 @@ package com.lalabib.mhsid.data.remote
 import android.util.Log
 import com.lalabib.mhsid.data.remote.network.ApiService
 import com.lalabib.mhsid.data.remote.network.Result
+import com.lalabib.mhsid.domain.model.DetailDataMahasiswa
 import com.lalabib.mhsid.domain.model.Mahasiswa
 import com.lalabib.mhsid.domain.repository.IMahasiswaRepository
 import com.lalabib.mhsid.utils.DataMapper
@@ -34,5 +35,16 @@ class MahasiswaRepository @Inject constructor(
         }.flowOn(Dispatchers.IO)
     }
 
-
+    override fun getDetailMahasiswa(uniqueId: String): Flow<Result<DetailDataMahasiswa>> {
+        return flow {
+            try {
+                val response = apiService.getDetailMahasiswa(uniqueId)
+                val dataArray = DataMapper.responseDetailDataMhsToDomain(response)
+                emit(Result.Success(dataArray))
+            } catch (e: Exception) {
+                emit(Result.Error(e.message.toString()))
+                Log.e("TAG", e.message.toString())
+            }
+        }
+    }
 }
