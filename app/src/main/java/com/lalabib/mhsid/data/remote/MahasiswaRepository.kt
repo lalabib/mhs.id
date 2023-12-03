@@ -30,7 +30,7 @@ class MahasiswaRepository @Inject constructor(
                 }
             } catch (e: Exception) {
                 emit(Result.Error(e.message.toString()))
-                Log.e("TAG", e.message.toString())
+                Log.e(Tag, e.message.toString())
             }
         }.flowOn(Dispatchers.IO)
     }
@@ -43,8 +43,12 @@ class MahasiswaRepository @Inject constructor(
                 emit(Result.Success(dataArray))
             } catch (e: Exception) {
                 emit(Result.Error(e.message.toString()))
-                Log.e("TAG", e.message.toString())
+                Log.e(Tag, e.message.toString())
             }
         }
+    }
+
+    companion object {
+        const val Tag = "TAG"
     }
 }

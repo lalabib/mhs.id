@@ -4,10 +4,9 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.SearchView
-import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.lalabib.mhsid.R
+import androidx.recyclerview.widget.RecyclerView
 import com.lalabib.mhsid.adapter.MahasiswaAdapter
 import com.lalabib.mhsid.data.remote.network.Result
 import com.lalabib.mhsid.databinding.ActivityHomeBinding
@@ -20,8 +19,8 @@ class HomeActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityHomeBinding
     private lateinit var homeContentBinding: ContentHomeBinding
-
     private lateinit var search: SearchView
+    private lateinit var recyclerView: RecyclerView
     private lateinit var mahasiswaAdapter: MahasiswaAdapter
     private val homeViewModel: HomeViewModel by viewModels()
 
@@ -58,27 +57,25 @@ class HomeActivity : AppCompatActivity() {
             }
 
             override fun onQueryTextChange(query: String): Boolean {
-                handleSearchQuery(query)
+                if (query.isNotEmpty()) {
+                    handleSearchQuery(query)
+                }
                 return true
             }
         })
     }
 
     private fun handleSearchQuery(name: String) {
-        homeViewModel.getMahasiswa(name).observe(this@HomeActivity) { mahasiwa ->
-            if (mahasiwa != null) {
-                when (mahasiwa) {
+        homeViewModel.getMahasiswa(name).observe(this@HomeActivity) { mahasiswa ->
+            if (mahasiswa != null) {
+                when (mahasiswa) {
                     is Result.Loading -> {}
                     is Result.Success -> {
-                        mahasiswaAdapter.submitList(mahasiwa.data)
+                        mahasiswaAdapter.submitList(mahasiswa.data.takeIf { it.isNotEmpty() }) {
+                            recyclerView.scrollToPosition(0)
+                        }
                     }
-                    is Result.Error -> {
-                        Toast.makeText(
-                            this@HomeActivity,
-                            getString(R.string.search_error),
-                            Toast.LENGTH_SHORT
-                        ).show()
-                    }
+                    is Result.Error -> {}
                 }
             }
         }

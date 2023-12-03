@@ -12,6 +12,11 @@
     <string name="smt_masuk_title">Semester masuk</string>
     <string name="status_awal_title">Status awal</string>
     <string name="status_saat_ini_title">Status saat ini</string>
+    <string name="semester_title">Semester</string>
+    <string name="status_title">Status</string>
+    <string name="sks_title">SKS</string>
+    <string name="kode_matkul_title">Kode Matkul</string>
+    <string name="nama_matkul_title">Nama Matkul</string>
     <string name="name">Kuroco Harmadi</string>
     <string name="nim">1232131</string>
     <string name="univ">Universitas Abc</string>
@@ -21,8 +26,13 @@
     <string name="smt_masuk">2019 Ganjil</string>
     <string name="status_awal">Peserta didik baru</string>
     <string name="status_saat_ini">Lulus</string>
-    <string name="genap">Genap</string>
-    <string name="ganjil">Ganjil</string>
+    <string name="semester">2019 Ganjil</string>
+    <string name="status">Aktif</string>
+    <string name="sks">20</string>
+    <string name="kode_matkul">IT011302</string>
+    <string name="nama_matkul">PENGANTAR TEKNOLOGI SISTEM INFORMASI **</string>
+    <string name="status_kuliah">Riwayat Status Kuliah</string>
+    <string name="status_studi">Riwayat Studi</string>
     <string name="search_hint">Cari berdasarkan nama atau nim..</string>
     <string name="search_error">Data tidak ditemukan!</string>
     <string name="error_data">An error occurred while passing data</string>

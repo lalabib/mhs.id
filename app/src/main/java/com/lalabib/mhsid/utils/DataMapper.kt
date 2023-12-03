@@ -40,8 +40,8 @@ object DataMapper {
     private fun responseDetailMhsToDomain(response: DetailMahasiswaResponse) =
         DetailMahasiswa(
             response.nama,
-            response.nim,
             response.jenisKelamin,
+            response.nim,
             response.univ,
             response.prodi,
             response.jenjang,
