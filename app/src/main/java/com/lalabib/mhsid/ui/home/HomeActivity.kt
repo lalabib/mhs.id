@@ -35,6 +35,8 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun setupAction() {
+        recyclerView = binding.contentHome.rvMahasiswa
+
         mahasiswaAdapter = MahasiswaAdapter { mahasiswa ->
             Intent(this@HomeActivity, DetailActivity::class.java).apply {
                 putExtra(DetailActivity.EXTRA_DATA, mahasiswa.uniqueId)
@@ -75,6 +77,7 @@ class HomeActivity : AppCompatActivity() {
                             recyclerView.scrollToPosition(0)
                         }
                     }
+
                     is Result.Error -> {}
                 }
             }

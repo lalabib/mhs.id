@@ -16,6 +16,8 @@ import com.lalabib.mhsid.data.remote.network.Result
 import com.lalabib.mhsid.databinding.ActivityDetailBinding
 import com.lalabib.mhsid.databinding.ContentDetailBinding
 import com.lalabib.mhsid.domain.model.DetailMahasiswa
+import com.lalabib.mhsid.utils.SharedObject.RegexDate
+import com.lalabib.mhsid.utils.SharedObject.Z
 import com.lalabib.mhsid.utils.SharedObject.ganjil
 import com.lalabib.mhsid.utils.SharedObject.genap
 import dagger.hilt.android.AndroidEntryPoint
@@ -117,7 +119,7 @@ class DetailActivity : AppCompatActivity() {
             tvProdi.text = mahasiswa.prodi
             tvJenjang.text = mahasiswa.jenjang
             tvStatusAwal.text = mahasiswa.statusAwal
-            tvStatusSaatIni.text = mahasiswa.statusSaatIni
+            //tvStatusSaatIni.text = mahasiswa.statusSaatIni
 
             // Convert semester data
             val semester = mahasiswa.smtAwal.toIntOrNull()
@@ -131,15 +133,26 @@ class DetailActivity : AppCompatActivity() {
                 }
             }
 
-//            // Substring status
-//            val status = mahasiswa.statusSaatIni
-//            val index = status.indexOfFirst { it.isDigit() }
-//            if (index != -1) {
-//                tvStatusSaatIni.text = status.substring(0, index)
-//            } else {
-//                tvStatusSaatIni.text = status
-//            }
+            // Substring status mahasiswa
+            val status = mahasiswa.statusSaatIni
+            val index = status.indexOfFirst { it.isDigit() }
+            val indexZ = status.indexOf(Z)
+            val extractedDate = RegexDate.find(status)
 
+            if (extractedDate != null) {
+                if (index != -1) {
+                    if (indexZ != -1) {
+                        tvStatusSaatIni.append("${status.substring(0, index)} ${extractedDate.value}")
+                        tvNoIjazah.text = status.substring(indexZ + 1).trimStart()
+                    } else {
+                        tvStatusSaatIni.append(status.substring(0, index))
+                    }
+                } else {
+                    tvStatusSaatIni.text = status
+                }
+            } else {
+                tvStatusSaatIni.text = status
+            }
         }
     }
 
