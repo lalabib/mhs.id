@@ -6,7 +6,7 @@
     <color name="blue_500">#3896DA</color>
     <color name="blue_800">#3F7EB9</color>
     <color name="red">#FE251B</color>
-    <color name="black">#FF000000</color>
+    <color name="black">#101010</color>
     <color name="white">#FFFFFFFF</color>
     <color name="white_light">#F1F5F9</color>
 </resources>

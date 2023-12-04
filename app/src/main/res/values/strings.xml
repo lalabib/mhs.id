@@ -2,6 +2,7 @@
     <string name="app_name">mhs.id</string>
 
     <string name="detail_title">Detail Mahasiswa</string>
+    <string name="title_app">Mhs.id</string>
     <string name="image">Gambar</string>
     <string name="name_title">Nama</string>
     <string name="nim_title">NIM</string>
@@ -37,5 +38,6 @@
     <string name="status_studi">Riwayat Studi</string>
     <string name="search_hint">Cari berdasarkan nama atau nim..</string>
     <string name="search_error">Data tidak ditemukan!</string>
+    <string name="search_text">Mau cari siapa..?</string>
     <string name="error_data">An error occurred while passing data</string>
 </resources>

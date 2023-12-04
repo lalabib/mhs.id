@@ -3,6 +3,7 @@ package com.lalabib.mhsid.ui.home
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.SearchView
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -73,14 +74,32 @@ class HomeActivity : AppCompatActivity() {
                 when (mahasiswa) {
                     is Result.Loading -> {}
                     is Result.Success -> {
+                        isNotEmpty()
                         mahasiswaAdapter.submitList(mahasiswa.data.takeIf { it.isNotEmpty() }) {
                             recyclerView.scrollToPosition(0)
                         }
                     }
-
                     is Result.Error -> {}
                 }
+            } else {
+                isEmpty()
             }
+        }
+    }
+
+    private fun isNotEmpty() {
+        binding.contentHome.apply {
+            rvMahasiswa.visibility = View.VISIBLE
+            ivSearch.visibility = View.GONE
+            tvTitle.visibility = View.GONE
+        }
+    }
+
+    private fun isEmpty() {
+        binding.contentHome.apply {
+            rvMahasiswa.visibility = View.GONE
+            ivSearch.visibility = View.VISIBLE
+            tvTitle.visibility = View.VISIBLE
         }
     }
 }
