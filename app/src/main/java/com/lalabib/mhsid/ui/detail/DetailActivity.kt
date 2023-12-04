@@ -119,7 +119,6 @@ class DetailActivity : AppCompatActivity() {
             tvProdi.text = mahasiswa.prodi
             tvJenjang.text = mahasiswa.jenjang
             tvStatusAwal.text = mahasiswa.statusAwal
-            //tvStatusSaatIni.text = mahasiswa.statusSaatIni
 
             // Convert semester data
             val semester = mahasiswa.smtAwal.toIntOrNull()
